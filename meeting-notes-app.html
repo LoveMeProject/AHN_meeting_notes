@@ -8,271 +8,140 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
   :root {
-    --navy: #1a2b4a;
-    --navy-mid: #243659;
-    --navy-light: #2f4878;
-    --accent: #4a90d9;
-    --accent-glow: #4a90d940;
-    --gold: #e8b84b;
-    --bg: #0f1923;
-    --bg-card: #162030;
-    --bg-input: #1c2d42;
-    --border: #2a3f5e;
-    --text: #e2eaf5;
-    --text-muted: #7a9abf;
-    --text-dim: #4a6480;
-    --green: #3dd68c;
-    --red: #ff6b6b;
+    --accent: #3b7dd8;
+    --accent-light: #5a9ae8;
+    --gold: #d4a017;
+    --bg: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-input: #f5f6f8;
+    --border: #dde1e8;
+    --text: #1a1f2e;
+    --text-muted: #5a6478;
+    --text-dim: #8a94a8;
+    --green: #1a9e5c;
+    --red: #d93535;
+    --header-bg: #2c3e6b;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
 
   /* Header */
-  header {
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
-  .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
-  .header-right { display: flex; align-items: center; gap: 12px; }
-  .header-date { font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+  header { background: var(--header-bg); padding: 13px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px #0002; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; color: #fff; }
+  .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: #f0c040; }
+  .header-date { font-size: 12px; color: #a8b8d8; font-family: 'JetBrains Mono', monospace; }
 
   /* Tabs */
-  .tabs {
-    display: flex; background: var(--bg-card);
-    border-bottom: 1px solid var(--border); padding: 0 28px;
-  }
-  .tab {
-    padding: 12px 20px; font-size: 13px; font-weight: 500;
-    color: var(--text-muted); cursor: pointer;
-    border-bottom: 2px solid transparent; transition: all .2s;
-  }
-  .tab:hover { color: var(--text); }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tabs { display: flex; background: var(--header-bg); border-bottom: 1px solid #1e2d56; padding: 0 28px; }
+  .tab { padding: 11px 20px; font-size: 13px; font-weight: 500; color: #8898c0; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; }
+  .tab:hover { color: #c8d8f0; }
+  .tab.active { color: #fff; border-bottom-color: #f0c040; }
 
-  main { flex: 1; padding: 24px 28px; }
+  main { flex: 1; padding: 20px 24px; }
   .page { display: none; }
   .page.active { display: block; }
 
-  /* ── WRITE PAGE: 2-column layout ── */
-  .write-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    height: calc(100vh - 160px);
-  }
-  @media (max-width: 900px) {
-    .write-layout { grid-template-columns: 1fr; height: auto; }
-  }
+  /* Write layout */
+  .write-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; height: calc(100vh - 148px); }
+  @media (max-width: 900px) { .write-layout { grid-template-columns: 1fr; height: auto; } }
 
-  .panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-  }
-  .panel-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--text-dim);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .panel-body { flex: 1; overflow-y: auto; padding: 20px; }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 1px 4px #0001; }
+  .panel-header { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between; background: #fafbfc; }
+  .panel-body { flex: 1; overflow-y: auto; padding: 18px; }
   .panel-body::-webkit-scrollbar { width: 4px; }
   .panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-  /* Form elements */
-  label { font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px; font-weight: 500; }
-  input, select, textarea {
-    width: 100%; background: var(--bg-input);
-    border: 1px solid var(--border); border-radius: 8px;
-    color: var(--text); font-family: inherit; font-size: 13px;
-    padding: 10px 12px; margin-bottom: 16px;
-    transition: border-color .2s; outline: none;
+  /* Form */
+  label { font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 5px; font-weight: 600; }
+  input[type=text], input[type=date], select, textarea {
+    width: 100%; background: var(--bg-input); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-family: inherit; font-size: 13px;
+    padding: 9px 12px; margin-bottom: 14px; transition: border-color .2s; outline: none;
   }
-  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); background: #fff; }
   textarea { resize: vertical; }
-  select option { background: var(--bg-card); }
+  select option { background: #fff; }
 
-  /* Chips */
-  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  .chip {
-    padding: 6px 13px; border-radius: 20px; font-size: 12px; font-weight: 500;
-    border: 1px solid var(--border); background: var(--bg-input);
-    color: var(--text-muted); cursor: pointer; transition: all .2s; user-select: none;
+  /* Tag input row */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; margin-bottom: 14px; min-height: 34px; padding: 6px 8px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; }
+  .tag-row:focus-within { border-color: var(--accent); background: #fff; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 14px; font-size: 12px; font-weight: 600;
+    background: #e8eef8; border: 1px solid #c0cce8; color: var(--accent);
   }
-  .chip.on { background: var(--navy-light); border-color: var(--accent); color: var(--accent); }
+  .tag .tag-del { cursor: pointer; font-size: 13px; color: var(--text-dim); line-height: 1; margin-left: 2px; }
+  .tag .tag-del:hover { color: var(--red); }
+  .tag-input { border: none; outline: none; background: transparent; font-family: inherit; font-size: 13px; color: var(--text); min-width: 80px; flex: 1; padding: 2px 4px; }
+  .add-btn { padding: 2px 10px; border-radius: 14px; font-size: 12px; font-weight: 700; background: var(--accent); color: #fff; border: none; cursor: pointer; white-space: nowrap; }
+  .add-btn:hover { background: var(--accent-light); }
 
   /* Record button */
-  .record-section {
-    display: flex; align-items: center; gap: 16px;
-    background: var(--bg-input); border: 1px solid var(--border);
-    border-radius: 12px; padding: 16px; margin-bottom: 16px;
-  }
-  .rec-btn {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: var(--navy-light); border: 2px solid var(--border);
-    cursor: pointer; font-size: 22px; display: flex;
-    align-items: center; justify-content: center;
-    transition: all .2s; flex-shrink: 0; text-decoration: none;
-  }
-  .rec-btn:hover { border-color: var(--accent); transform: scale(1.05); }
-  .rec-info { flex: 1; }
-  .rec-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
-  .rec-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+  .record-section { display: flex; align-items: center; gap: 14px; background: #f0f4ff; border: 1px solid #c8d4f0; border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+  .rec-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; text-decoration: none; }
+  .rec-btn:hover { background: var(--accent-light); transform: scale(1.05); }
+  .rec-info .rec-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .rec-info .rec-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
 
-  /* Generate button */
-  .gen-btn {
-    width: 100%; padding: 13px;
-    background: var(--accent); border: none; border-radius: 10px;
-    color: #fff; font-family: inherit; font-size: 14px; font-weight: 700;
-    cursor: pointer; transition: all .2s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin-top: 4px;
-  }
-  .gen-btn:hover { background: #5a9fe8; transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+  /* Gen button */
+  .gen-btn { width: 100%; padding: 12px; background: var(--accent); border: none; border-radius: 10px; color: #fff; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .gen-btn:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: 0 4px 12px #3b7dd830; }
   .gen-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
 
-  /* Right panel sections */
-  .right-section { margin-bottom: 20px; }
-  .section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--text-dim);
-    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
-  }
-  .section-label .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-  }
-  .dot-blue { background: var(--accent); }
-  .dot-gold { background: var(--gold); }
-  .dot-green { background: var(--green); }
+  /* Right sections */
+  .right-section { margin-bottom: 18px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .sdot { width: 6px; height: 6px; border-radius: 50%; }
+  .sdot-blue { background: var(--accent); }
+  .sdot-gold { background: var(--gold); }
+  .sdot-green { background: var(--green); }
 
-  /* Summary box */
-  .summary-box {
-    background: var(--bg-input); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px; font-size: 13px;
-    line-height: 1.8; color: var(--text); white-space: pre-wrap;
-    min-height: 120px;
-  }
-  .summary-empty {
-    color: var(--text-dim); font-style: italic; font-size: 13px;
-    text-align: center; padding: 30px 0;
-  }
+  .summary-box { background: var(--bg-input); border: 1px solid var(--border); border-radius: 10px; padding: 14px; font-size: 13px; line-height: 1.85; color: var(--text); white-space: pre-wrap; min-height: 100px; }
+  .summary-empty { color: var(--text-dim); font-style: italic; text-align: center; padding: 28px 0; font-size: 13px; }
 
-  /* Memo input */
-  .memo-input {
-    width: 100%; background: var(--bg-input);
-    border: 1px solid var(--border); border-radius: 10px;
-    color: var(--text); font-family: inherit; font-size: 13px;
-    padding: 12px; min-height: 90px; resize: vertical;
-    outline: none; transition: border-color .2s; line-height: 1.7;
-    margin-bottom: 0;
-  }
-  .memo-input:focus { border-color: var(--gold); }
+  .memo-input { width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-family: inherit; font-size: 13px; padding: 11px 12px; min-height: 80px; resize: vertical; outline: none; transition: border-color .2s; line-height: 1.7; }
+  .memo-input:focus { border-color: var(--gold); background: #fff; }
 
-  /* Todo list */
-  .todo-items { display: flex; flex-direction: column; gap: 8px; }
-  .todo-row {
-    display: flex; align-items: flex-start; gap: 10px;
-    background: var(--bg-input); border-radius: 8px; padding: 10px 12px;
-  }
-  .todo-check {
-    width: 17px; height: 17px; border-radius: 4px;
-    border: 2px solid var(--border); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px; transition: all .2s;
-  }
+  .todo-items { display: flex; flex-direction: column; gap: 7px; }
+  .todo-row { display: flex; align-items: flex-start; gap: 9px; background: var(--bg-input); border-radius: 8px; padding: 9px 12px; border: 1px solid var(--border); }
+  .todo-check { width: 17px; height: 17px; border-radius: 4px; border: 2px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; transition: all .2s; background: #fff; }
   .todo-check.done { background: var(--green); border-color: var(--green); }
-  .todo-check.done::after { content: '✓'; font-size: 10px; color: #0f1923; font-weight: 700; }
-  .todo-text { font-size: 12px; line-height: 1.6; flex: 1; }
+  .todo-check.done::after { content: '✓'; font-size: 10px; color: #fff; font-weight: 700; }
+  .todo-text { font-size: 12px; line-height: 1.6; flex: 1; color: var(--text); }
   .todo-text.done { text-decoration: line-through; opacity: .5; }
-  .todo-empty { font-size: 12px; color: var(--text-dim); text-align: center; padding: 16px 0; }
-
-  /* Notion save button */
-  .notion-btn {
-    width: 100%; padding: 13px;
-    background: #191919; border: 1px solid #333;
-    border-radius: 10px; color: #fff;
-    font-family: inherit; font-size: 14px; font-weight: 700;
-    cursor: pointer; transition: all .2s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .notion-btn:hover { background: #2a2a2a; border-color: #555; transform: translateY(-1px); }
-  .notion-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-  .notion-icon { font-size: 18px; }
+  .todo-empty { font-size: 12px; color: var(--text-dim); text-align: center; padding: 14px 0; }
 
   /* Panel footer */
-  .panel-footer {
-    padding: 16px 20px;
-    border-top: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 10px;
-  }
+  .panel-footer { padding: 14px 18px; border-top: 1px solid var(--border); background: #fafbfc; }
+  .notion-btn { width: 100%; padding: 12px; background: #1f1f1f; border: none; border-radius: 10px; color: #fff; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .notion-btn:hover { background: #333; transform: translateY(-1px); }
+  .notion-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
 
-  /* Spinner */
-  .spinner {
-    width: 15px; height: 15px; border-radius: 50%;
-    border: 2px solid #ffffff40; border-top-color: #fff;
-    animation: spin .7s linear infinite; display: inline-block;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── ARCHIVE PAGE ── */
-  .arch-header { display: flex; gap: 10px; margin-bottom: 20px; }
+  /* Archive */
+  .arch-header { display: flex; gap: 10px; margin-bottom: 18px; }
   .arch-header input { margin-bottom: 0; }
   .arch-filter { width: auto; margin-bottom: 0; min-width: 130px; }
   .note-list { display: flex; flex-direction: column; gap: 10px; }
-  .note-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px 20px; cursor: pointer;
-    transition: all .2s; display: flex; justify-content: space-between; gap: 16px;
-  }
-  .note-card:hover { border-color: var(--accent); transform: translateX(3px); }
-  .note-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .note-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; cursor: pointer; transition: all .2s; display: flex; justify-content: space-between; gap: 16px; box-shadow: 0 1px 3px #0001; }
+  .note-card:hover { border-color: var(--accent); transform: translateX(3px); box-shadow: 0 2px 8px #3b7dd820; }
+  .note-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
   .note-meta { font-size: 12px; color: var(--text-muted); }
-  .note-preview { font-size: 12px; color: var(--text-dim); margin-top: 6px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  .dept-tag { display: inline-block; padding: 3px 9px; border-radius: 12px; font-size: 11px; font-weight: 600; background: var(--navy-light); color: var(--accent); margin: 2px; }
+  .note-preview { font-size: 12px; color: var(--text-dim); margin-top: 5px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .dept-tag { display: inline-block; padding: 3px 9px; border-radius: 12px; font-size: 11px; font-weight: 600; background: #e8eef8; color: var(--accent); margin: 2px; }
   .empty-state { text-align: center; padding: 60px; color: var(--text-dim); }
   .empty-icon { font-size: 36px; margin-bottom: 12px; }
 
-  /* ── TODO PAGE ── */
-  .todo-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-  .filter-btn {
-    padding: 6px 14px; border-radius: 20px; font-size: 12px;
-    border: 1px solid var(--border); background: var(--bg-input);
-    color: var(--text-muted); cursor: pointer; transition: all .2s; font-family: inherit;
-  }
-  .filter-btn.active { background: var(--navy-light); border-color: var(--accent); color: var(--accent); }
+  /* Todo page */
+  .todo-filters { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border-radius: 20px; font-size: 12px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted); cursor: pointer; transition: all .2s; font-family: inherit; }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .full-todo-list { display: flex; flex-direction: column; gap: 8px; }
-  .full-todo-item {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 14px 18px;
-    display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
-  }
-  .ftodo-check {
-    width: 18px; height: 18px; border-radius: 5px;
-    border: 2px solid var(--border); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: all .2s; background: var(--bg-input);
-  }
+  .full-todo-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; box-shadow: 0 1px 3px #0001; }
+  .ftodo-check { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; background: #fff; }
   .ftodo-check.done { background: var(--green); border-color: var(--green); }
-  .ftodo-check.done::after { content: '✓'; font-size: 11px; color: #0f1923; font-weight: 700; }
-  .ftodo-text { font-size: 13px; }
+  .ftodo-check.done::after { content: '✓'; font-size: 11px; color: #fff; font-weight: 700; }
+  .ftodo-text { font-size: 13px; color: var(--text); }
   .ftodo-text.done { text-decoration: line-through; opacity: .5; }
   .ftodo-right { text-align: right; font-size: 11px; }
   .ftodo-dept { color: var(--accent); font-weight: 600; }
@@ -281,65 +150,42 @@
   .ftodo-due.soon { color: var(--gold); font-weight: 600; }
 
   /* Modal */
-  .modal-overlay {
-    position: fixed; inset: 0; background: #00000080;
-    z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px;
-  }
+  .modal-overlay { position: fixed; inset: 0; background: #00000050; z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 14px; max-width: 700px; width: 100%;
-    max-height: 85vh; overflow-y: auto; padding: 28px;
-  }
-  .modal-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 12px; }
-  .modal-title { font-size: 17px; font-weight: 700; line-height: 1.4; }
-  .modal-close {
-    background: none; border: 1px solid var(--border); border-radius: 8px;
-    color: var(--text-muted); font-size: 15px; cursor: pointer;
-    padding: 4px 10px; flex-shrink: 0; transition: all .2s;
-  }
+  .modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; max-width: 700px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 8px 32px #0002; }
+  .modal-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+  .modal-title { font-size: 17px; font-weight: 700; color: var(--text); }
+  .modal-close { background: none; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); font-size: 15px; cursor: pointer; padding: 4px 10px; flex-shrink: 0; transition: all .2s; }
   .modal-close:hover { border-color: var(--red); color: var(--red); }
-  .modal-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
-  .modal-body { font-size: 13px; line-height: 1.9; white-space: pre-wrap; }
-  .modal-del {
-    margin-top: 20px; padding: 8px 16px; background: none;
-    border: 1px solid var(--red); border-radius: 8px;
-    color: var(--red); font-family: inherit; font-size: 12px; cursor: pointer; transition: all .2s;
-  }
-  .modal-del:hover { background: #ff6b6b20; }
+  .modal-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .modal-body { font-size: 13px; line-height: 1.9; white-space: pre-wrap; color: var(--text); }
+  .modal-del { margin-top: 20px; padding: 8px 16px; background: none; border: 1px solid var(--red); border-radius: 8px; color: var(--red); font-family: inherit; font-size: 12px; cursor: pointer; transition: all .2s; }
+  .modal-del:hover { background: #d9353510; }
 
-  /* Notion settings modal */
-  .notion-modal {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 14px; max-width: 460px; width: 100%; padding: 28px;
-  }
+  .notion-modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; max-width: 460px; width: 100%; padding: 28px; box-shadow: 0 8px 32px #0002; }
+
+  /* Spinner */
+  .spinner { width: 15px; height: 15px; border-radius: 50%; border: 2px solid #ffffff60; border-top-color: #fff; animation: spin .7s linear infinite; display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* Toast */
-  .toast {
-    position: fixed; bottom: 28px; right: 28px;
-    background: var(--navy-light); border: 1px solid var(--accent);
-    color: var(--text); padding: 12px 20px; border-radius: 10px;
-    font-size: 13px; z-index: 300; opacity: 0; pointer-events: none;
-    transition: opacity .3s; transform: translateY(6px);
-  }
+  .toast { position: fixed; bottom: 28px; right: 28px; background: var(--header-bg); border: 1px solid #4a6aaa; color: #fff; padding: 12px 20px; border-radius: 10px; font-size: 13px; z-index: 300; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; transform: translateY(6px); }
   .toast.show { opacity: 1; transform: none; }
 
-  .divider { height: 1px; background: var(--border); margin: 16px 0; }
+  .divider { height: 1px; background: var(--border); margin: 14px 0; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo"><div class="logo-dot"></div>AHN 회의록</div>
-  <div class="header-right">
-    <div class="header-date" id="headerDate"></div>
-  </div>
+  <div class="header-date" id="headerDate"></div>
 </header>
 
 <div class="tabs">
-  <div class="tab active" data-page="write" onclick="showPage('write',this)">📝 회의록 작성</div>
-  <div class="tab" data-page="archive" onclick="showPage('archive',this)">🗂 보관함</div>
-  <div class="tab" data-page="todos" onclick="showPage('todos',this)">✅ To-Do</div>
+  <div class="tab active" onclick="showPage('write',this)">📝 회의록 작성</div>
+  <div class="tab" onclick="showPage('archive',this)">🗂 보관함</div>
+  <div class="tab" onclick="showPage('todos',this)">✅ To-Do</div>
 </div>
 
 <main>
@@ -353,9 +199,8 @@
       <div class="panel-header">회의 정보 입력</div>
       <div class="panel-body">
 
-        <!-- 녹음 버튼 -->
         <div class="record-section">
-          <a class="rec-btn" href="https://clovanote.naver.com" target="_blank" title="클로바 노트 열기">🎙</a>
+          <a class="rec-btn" href="https://clovanote.naver.com" target="_blank">🎙</a>
           <div class="rec-info">
             <div class="rec-title">클로바 노트로 녹음하기</div>
             <div class="rec-desc">버튼을 누르면 클로바 노트가 열려요.<br>녹음 후 변환된 텍스트를 아래에 붙여넣으세요.</div>
@@ -369,15 +214,23 @@
         <input type="text" id="iTitle" placeholder="예: 겸임제도 폐지 관련 부서 조정">
 
         <label>참석 부서</label>
-        <div class="chip-group" id="deptChips">
-          <div class="chip" onclick="toggleChip(this)" data-v="CA(기획조정실)">CA(기획조정실)</div>
-          <div class="chip" onclick="toggleChip(this)" data-v="HR본부">HR본부</div>
-          <div class="chip" onclick="toggleChip(this)" data-v="재무기획팀">재무기획팀</div>
-          <div class="chip" onclick="toggleChip(this)" data-v="외부">외부</div>
+        <div class="tag-row" id="deptRow">
+          <input class="tag-input" id="deptInput" placeholder="부서명 입력 후 +" onkeydown="if(event.key==='Enter')addTag('dept')">
+          <button class="add-btn" onclick="addTag('dept')">+</button>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="deptPresets">
+          <span style="font-size:11px;color:var(--text-dim);margin-right:2px">빠른 선택:</span>
+          <button onclick="addPreset('dept','CA(기획조정실)')" style="padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid var(--border);background:var(--bg-input);cursor:pointer;color:var(--text-muted)">CA</button>
+          <button onclick="addPreset('dept','HR본부')" style="padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid var(--border);background:var(--bg-input);cursor:pointer;color:var(--text-muted)">HR본부</button>
+          <button onclick="addPreset('dept','재무기획팀')" style="padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid var(--border);background:var(--bg-input);cursor:pointer;color:var(--text-muted)">재무기획팀</button>
+          <button onclick="addPreset('dept','외부')" style="padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid var(--border);background:var(--bg-input);cursor:pointer;color:var(--text-muted)">외부</button>
         </div>
 
         <label>참여자</label>
-        <input type="text" id="iAttendees" placeholder="예: 김XX 부장, 이XX 팀장">
+        <div class="tag-row" id="attendeeRow">
+          <input class="tag-input" id="attendeeInput" placeholder="이름 입력 후 +" onkeydown="if(event.key==='Enter')addTag('attendee')">
+          <button class="add-btn" onclick="addTag('attendee')">+</button>
+        </div>
 
         <label>회의 유형</label>
         <select id="iType">
@@ -390,7 +243,7 @@
         <div class="divider"></div>
 
         <label>클로바 노트 변환 텍스트 붙여넣기</label>
-        <textarea id="iTranscript" placeholder="클로바 노트에서 변환된 텍스트를 여기에 붙여넣으세요." style="min-height:140px"></textarea>
+        <textarea id="iTranscript" placeholder="클로바 노트에서 변환된 텍스트를 여기에 붙여넣으세요." style="min-height:130px"></textarea>
 
         <button class="gen-btn" id="genBtn" onclick="generate()">
           <span id="genIcon">✨</span>
@@ -404,38 +257,33 @@
     <div class="panel">
       <div class="panel-header">
         <span>회의록 결과</span>
-        <span id="resultStatus" style="font-size:11px;color:var(--text-dim)">회의록 생성 전</span>
+        <span id="resultStatus" style="font-size:11px;color:var(--text-dim)">생성 전</span>
       </div>
-      <div class="panel-body" id="rightBody">
+      <div class="panel-body">
 
-        <!-- Claude 요약 결과 -->
         <div class="right-section">
-          <div class="section-label"><div class="dot dot-blue"></div>Claude 요약 결과</div>
+          <div class="section-label"><div class="sdot sdot-blue"></div>Claude 요약 결과</div>
           <div class="summary-box" id="summaryBox">
             <div class="summary-empty">왼쪽에서 회의록 생성을 누르면<br>여기에 요약이 나타납니다</div>
           </div>
         </div>
 
-        <!-- 내 기록 -->
         <div class="right-section">
-          <div class="section-label"><div class="dot dot-gold"></div>내 기록</div>
+          <div class="section-label"><div class="sdot sdot-gold"></div>내 기록</div>
           <textarea class="memo-input" id="iMemo" placeholder="추가할 내용, 내 판단, 후속 메모 등을 자유롭게 입력하세요."></textarea>
         </div>
 
-        <!-- To-Do 목록 -->
         <div class="right-section">
-          <div class="section-label"><div class="dot dot-green"></div>To-Do 목록</div>
+          <div class="section-label"><div class="sdot sdot-green"></div>To-Do 목록</div>
           <div class="todo-items" id="todoItems">
             <div class="todo-empty">회의록 생성 시 자동으로 추출됩니다</div>
           </div>
         </div>
 
       </div>
-
-      <!-- 노션 저장 버튼 -->
       <div class="panel-footer">
         <button class="notion-btn" id="notionBtn" onclick="saveToNotion()">
-          <span class="notion-icon">◼</span> 노션에 저장
+          ◼ 노션에 저장
         </button>
       </div>
     </div>
@@ -490,9 +338,7 @@
       <div class="modal-title">◼ 노션 연동 설정</div>
       <button class="modal-close" onclick="closeNotionModal()">✕</button>
     </div>
-    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">
-      한 번만 입력하면 저장돼요. 이후엔 버튼 하나로 노션에 저장됩니다.
-    </div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">한 번만 입력하면 저장돼요.<br>이후엔 버튼 하나로 노션에 저장됩니다.</p>
     <label>Notion API 키</label>
     <input id="nKey" type="password" placeholder="secret_xxxxxxxxxx...">
     <label>Notion DB ID</label>
@@ -504,13 +350,13 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ── Data ──
 let notes = JSON.parse(localStorage.getItem('ahn_notes') || '[]');
 let todos = JSON.parse(localStorage.getItem('ahn_todos') || '[]');
 let currentSummary = '';
 let todoFilter = 'all';
+let deptTags = [];
+let attendeeTags = [];
 
-// ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
   const today = new Date();
   document.getElementById('iDate').value = today.toISOString().split('T')[0];
@@ -528,29 +374,65 @@ function showPage(name, el) {
   if (name === 'todos') renderTodos();
 }
 
-// ── Chips ──
-function toggleChip(el) { el.classList.toggle('on'); }
-function getDepts() {
-  return [...document.querySelectorAll('#deptChips .chip.on')].map(c => c.dataset.v);
+// ── Tag input ──
+function addTag(type) {
+  const inputId = type === 'dept' ? 'deptInput' : 'attendeeInput';
+  const rowId = type === 'dept' ? 'deptRow' : 'attendeeRow';
+  const arr = type === 'dept' ? deptTags : attendeeTags;
+  const val = document.getElementById(inputId).value.trim();
+  if (!val || arr.includes(val)) { document.getElementById(inputId).value = ''; return; }
+  arr.push(val);
+  document.getElementById(inputId).value = '';
+  renderTags(type);
+}
+
+function addPreset(type, val) {
+  const arr = type === 'dept' ? deptTags : attendeeTags;
+  if (!arr.includes(val)) { arr.push(val); renderTags(type); }
+}
+
+function removeTag(type, val) {
+  if (type === 'dept') deptTags = deptTags.filter(t => t !== val);
+  else attendeeTags = attendeeTags.filter(t => t !== val);
+  renderTags(type);
+}
+
+function renderTags(type) {
+  const rowId = type === 'dept' ? 'deptRow' : 'attendeeRow';
+  const inputId = type === 'dept' ? 'deptInput' : 'attendeeInput';
+  const arr = type === 'dept' ? deptTags : attendeeTags;
+  const row = document.getElementById(rowId);
+  // Remove existing tags
+  row.querySelectorAll('.tag').forEach(t => t.remove());
+  // Re-add tags before input
+  const input = document.getElementById(inputId);
+  arr.forEach(v => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.innerHTML = `${v}<span class="tag-del" onclick="removeTag('${type}','${v}')">×</span>`;
+    row.insertBefore(tag, input);
+  });
 }
 
 // ── Generate ──
 async function generate() {
   const transcript = document.getElementById('iTranscript').value.trim();
   const memo = document.getElementById('iMemo').value.trim();
-  if (!transcript && !memo) { showToast('클로바 노트 텍스트 또는 내 기록을 입력해주세요'); return; }
+  if (!transcript && !memo) {
+    showToast('클로바 노트 텍스트 또는 내 기록을 입력해주세요');
+    return;
+  }
 
   const title = document.getElementById('iTitle').value.trim() || '회의';
   const date = document.getElementById('iDate').value;
-  const depts = getDepts();
   const type = document.getElementById('iType').value;
-  const attendees = document.getElementById('iAttendees').value.trim();
 
   const btn = document.getElementById('genBtn');
   btn.disabled = true;
   document.getElementById('genIcon').innerHTML = '<div class="spinner"></div>';
   document.getElementById('genText').textContent = 'Claude가 작성 중...';
-  document.getElementById('summaryBox').innerHTML = '<div class="summary-empty">작성 중...</div>';
+  document.getElementById('summaryBox').innerHTML = '<div class="summary-empty">⏳ 작성 중입니다...</div>';
+  document.getElementById('resultStatus').textContent = '생성 중...';
 
   const prompt = `당신은 본부장 비서 역할의 회의록 전문가입니다.
 본부장이 직접 작성한 것처럼 자연스럽고 간결한 회의록을 작성해주세요.
@@ -558,8 +440,8 @@ async function generate() {
 [회의 정보]
 - 안건: ${title}
 - 날짜: ${date}
-- 참석 부서: ${depts.join(', ') || '미선택'}
-- 참여자: ${attendees || '미입력'}
+- 참석 부서: ${deptTags.join(', ') || '미선택'}
+- 참여자: ${attendeeTags.join(', ') || '미입력'}
 - 회의 유형: ${type}
 
 ${transcript ? `[클로바 노트 변환 텍스트]\n${transcript}` : ''}
@@ -594,17 +476,22 @@ ${memo ? `[본부장 메모]\n${memo}` : ''}
       })
     });
     const data = await res.json();
-    currentSummary = data.content?.find(c => c.type === 'text')?.text || '생성 실패';
+    currentSummary = data.content?.find(c => c.type === 'text')?.text || '';
 
-    document.getElementById('summaryBox').textContent = currentSummary;
-    document.getElementById('resultStatus').textContent = '✓ 생성 완료';
-    document.getElementById('resultStatus').style.color = 'var(--green)';
-
-    // Extract todos
-    renderInlineTodos(currentSummary, depts);
-
+    if (currentSummary) {
+      document.getElementById('summaryBox').textContent = currentSummary;
+      document.getElementById('resultStatus').textContent = '✓ 생성 완료';
+      document.getElementById('resultStatus').style.color = 'var(--green)';
+      renderInlineTodos(currentSummary);
+      showToast('✓ 회의록이 생성됐습니다');
+    } else {
+      document.getElementById('summaryBox').innerHTML = '<div class="summary-empty">생성 실패. 다시 시도해주세요.</div>';
+      document.getElementById('resultStatus').textContent = '실패';
+    }
   } catch(e) {
-    document.getElementById('summaryBox').textContent = '오류: ' + e.message;
+    document.getElementById('summaryBox').innerHTML = `<div class="summary-empty">오류: ${e.message}</div>`;
+    document.getElementById('resultStatus').textContent = '오류';
+    console.error(e);
   }
 
   btn.disabled = false;
@@ -613,7 +500,7 @@ ${memo ? `[본부장 메모]\n${memo}` : ''}
 }
 
 // ── Inline todos ──
-function renderInlineTodos(content, depts) {
+function renderInlineTodos(content) {
   const lines = content.split('\n');
   let inTodo = false;
   const extracted = [];
@@ -624,7 +511,6 @@ function renderInlineTodos(content, depts) {
     const t = line.replace(/^[-•*]\s*/, '').trim();
     if (t.length > 4) extracted.push(t);
   }
-
   const container = document.getElementById('todoItems');
   if (!extracted.length) {
     container.innerHTML = '<div class="todo-empty">To-Do 항목이 없습니다</div>';
@@ -636,13 +522,12 @@ function renderInlineTodos(content, depts) {
       <div class="todo-text" id="itt_${i}">${t}</div>
     </div>`).join('');
 }
-
 function toggleInlineTodo(i) {
   document.getElementById('itc_' + i).classList.toggle('done');
   document.getElementById('itt_' + i).classList.toggle('done');
 }
 
-// ── Notion save ──
+// ── Notion ──
 function saveToNotion() {
   if (!currentSummary) { showToast('먼저 회의록을 생성해주세요'); return; }
   const key = localStorage.getItem('notion_key');
@@ -650,7 +535,6 @@ function saveToNotion() {
   if (!key || !db) { openNotionModal(); return; }
   uploadToNotion(key, db);
 }
-
 function openNotionModal() {
   const k = localStorage.getItem('notion_key');
   if (k) document.getElementById('nKey').value = k;
@@ -668,9 +552,8 @@ function confirmNotion() {
 }
 
 async function uploadToNotion(apiKey, dbId) {
-  const title = document.getElementById('iTitle').value.trim() || '회의';
+  const title = document.getElementById('iTitle').value.trim() || '무제 회의';
   const date = document.getElementById('iDate').value;
-  const depts = getDepts();
   const type = document.getElementById('iType').value;
   const memo = document.getElementById('iMemo').value.trim();
   const fullContent = currentSummary + (memo ? '\n\n---\n## 내 기록\n' + memo : '');
@@ -679,71 +562,43 @@ async function uploadToNotion(apiKey, dbId) {
   btn.disabled = true;
   btn.innerHTML = '<div class="spinner"></div> 저장 중...';
 
-  // 2000자 단위로 블록 분할
   const chunks = [];
   for (let i = 0; i < fullContent.length; i += 1900) chunks.push(fullContent.slice(i, i+1900));
-  const blocks = chunks.map(c => ({
-    object: 'block', type: 'paragraph',
-    paragraph: { rich_text: [{ type: 'text', text: { content: c } }] }
-  }));
+  const blocks = chunks.map(c => ({ object:'block', type:'paragraph', paragraph:{ rich_text:[{ type:'text', text:{ content:c } }] } }));
 
-  const props = {
-    '이름': { title: [{ text: { content: title } }] }
-  };
+  const props = { '이름': { title: [{ text: { content: title } }] } };
   if (date) props['날짜'] = { date: { start: date } };
-  if (depts.length) props['부서'] = { multi_select: depts.map(d => ({ name: d })) };
+  if (deptTags.length) props['부서'] = { multi_select: deptTags.map(d => ({ name: d })) };
   if (type) props['회의유형'] = { select: { name: type } };
 
   try {
     const res = await fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + apiKey,
-        'Content-Type': 'application/json',
-        'Notion-Version': '2022-06-28'
-      },
+      headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json', 'Notion-Version': '2022-06-28' },
       body: JSON.stringify({ parent: { database_id: dbId }, properties: props, children: blocks })
     });
-
     if (res.ok) {
       showToast('✓ 노션에 저장됐습니다!');
-      saveLocal(); // 로컬에도 저장
+      saveLocal();
     } else {
       const err = await res.json();
-      if (err.code === 'unauthorized') {
-        showToast('API 키를 확인해주세요');
-        openNotionModal();
-      } else if (err.status === 400 && err.message?.includes('multi_select')) {
-        // 부서 속성 없을 때 재시도
-        delete props['부서'];
-        delete props['회의유형'];
-        const res2 = await fetch('https://api.notion.com/v1/pages', {
-          method: 'POST',
-          headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json', 'Notion-Version': '2022-06-28' },
-          body: JSON.stringify({ parent: { database_id: dbId }, properties: props, children: blocks })
-        });
-        if (res2.ok) { showToast('✓ 노션에 저장됐습니다!'); saveLocal(); }
-        else showToast('저장 실패: ' + (await res2.json()).message);
-      } else {
-        showToast('저장 실패: ' + (err.message || JSON.stringify(err)));
-      }
+      if (err.code === 'unauthorized') { showToast('API 키를 확인해주세요'); openNotionModal(); }
+      else { showToast('저장 실패: ' + (err.message || '오류')); console.error(err); }
     }
   } catch(e) {
-    showToast('CORS 오류: 노션 API는 브라우저에서 직접 호출이 제한됩니다');
+    showToast('네트워크 오류: ' + e.message);
     console.error(e);
   }
-
   btn.disabled = false;
-  btn.innerHTML = '<span class="notion-icon">◼</span> 노션에 저장';
+  btn.innerHTML = '◼ 노션에 저장';
 }
 
-// ── Local save ──
 function saveLocal() {
   const note = {
     id: Date.now(),
     title: document.getElementById('iTitle').value.trim() || '무제',
     date: document.getElementById('iDate').value,
-    depts: getDepts(),
+    depts: [...deptTags],
     type: document.getElementById('iType').value,
     content: currentSummary,
     memo: document.getElementById('iMemo').value.trim(),
@@ -751,8 +606,6 @@ function saveLocal() {
   };
   notes.unshift(note);
   localStorage.setItem('ahn_notes', JSON.stringify(notes));
-
-  // Extract & save todos
   const lines = currentSummary.split('\n');
   let inTodo = false;
   for (const line of lines) {
@@ -763,15 +616,7 @@ function saveLocal() {
     if (t.length < 5) continue;
     const dueMatch = t.match(/마감[:\s]+(\d{4}-\d{2}-\d{2})/);
     const deptMatch = t.match(/담당[:\s]+([^|]+)\|/);
-    todos.push({
-      id: Date.now() + Math.random(),
-      text: t,
-      dept: deptMatch ? deptMatch[1].trim() : (note.depts[0] || ''),
-      due: dueMatch ? dueMatch[1] : null,
-      done: false,
-      noteId: note.id,
-      noteTitle: note.title
-    });
+    todos.push({ id: Date.now() + Math.random(), text: t, dept: deptMatch ? deptMatch[1].trim() : (deptTags[0]||''), due: dueMatch ? dueMatch[1] : null, done: false, noteId: note.id, noteTitle: note.title });
   }
   localStorage.setItem('ahn_todos', JSON.stringify(todos));
 }
@@ -786,10 +631,7 @@ function renderArchive() {
     return true;
   });
   const el = document.getElementById('noteList');
-  if (!list.length) {
-    el.innerHTML = `<div class="empty-state"><div class="empty-icon">📂</div>저장된 회의록이 없습니다</div>`;
-    return;
-  }
+  if (!list.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">📂</div>저장된 회의록이 없습니다</div>`; return; }
   el.innerHTML = list.map(n => `
     <div class="note-card" onclick="openDetail(${n.id})">
       <div>
@@ -797,17 +639,14 @@ function renderArchive() {
         <div class="note-meta">${n.date} · ${n.type}</div>
         <div class="note-preview">${n.content.substring(0,100)}...</div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        ${n.depts.map(d => `<span class="dept-tag">${d}</span>`).join('')}
-      </div>
+      <div style="text-align:right;flex-shrink:0">${(n.depts||[]).map(d=>`<span class="dept-tag">${d}</span>`).join('')}</div>
     </div>`).join('');
 }
-
 function openDetail(id) {
   const n = notes.find(n => n.id === id);
   if (!n) return;
   document.getElementById('detailTitle').textContent = n.title;
-  document.getElementById('detailMeta').textContent = n.date + ' · ' + n.depts.join(', ') + ' · ' + n.type;
+  document.getElementById('detailMeta').textContent = n.date + ' · ' + (n.depts||[]).join(', ') + ' · ' + n.type;
   document.getElementById('detailBody').textContent = n.content + (n.memo ? '\n\n---\n내 기록:\n' + n.memo : '');
   document.getElementById('detailDelBtn').onclick = () => deleteNote(id);
   document.getElementById('detailOverlay').classList.add('open');
@@ -838,17 +677,12 @@ function renderTodos() {
   if (todoFilter === 'done') list = list.filter(t => t.done);
   if (todoFilter === 'overdue') list = list.filter(t => !t.done && t.due && t.due < today);
   list.sort((a,b) => (!a.due?1:!b.due?-1:a.due.localeCompare(b.due)));
-
   const el = document.getElementById('fullTodoList');
-  if (!list.length) {
-    el.innerHTML = `<div class="empty-state"><div class="empty-icon">✅</div>해당 항목이 없습니다</div>`;
-    return;
-  }
+  if (!list.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">✅</div>해당 항목이 없습니다</div>`; return; }
   el.innerHTML = list.map(t => {
     let dc = '';
     if (t.due) { if (t.due < today) dc='overdue'; else if (t.due <= soon) dc='soon'; }
-    return `
-    <div class="full-todo-item">
+    return `<div class="full-todo-item">
       <div class="ftodo-check ${t.done?'done':''}" onclick="toggleTodo('${t.id}')"></div>
       <div>
         <div class="ftodo-text ${t.done?'done':''}">${t.text}</div>
