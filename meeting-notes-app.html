@@ -656,10 +656,14 @@ async function uploadToNotion(apiKey, dbId) {
   if (typeTags.length) props['회의유형'] = { select: { name: typeTags[0] } };
 
   try {
-    const res = await fetch('https://api.notion.com/v1/pages', {
+    const res = await fetch('https://ahn-meeting-notes.vercel.app/api/notion', {
       method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json', 'Notion-Version': '2022-06-28' },
-      body: JSON.stringify({ parent: { database_id: dbId }, properties: props, children: blocks })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        apiKey: apiKey,
+        endpoint: 'pages',
+        body: { parent: { database_id: dbId }, properties: props, children: blocks }
+      })
     });
 
     if (res.ok) {
@@ -709,10 +713,14 @@ async function uploadTodosToNotion(apiKey, todoDbId, meetingTitle, meetingDate) 
     if (dept) todoProps['부서'] = { select: { name: dept } };
 
     try {
-      await fetch('https://api.notion.com/v1/pages', {
+      await fetch('https://ahn-meeting-notes.vercel.app/api/notion', {
         method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json', 'Notion-Version': '2022-06-28' },
-        body: JSON.stringify({ parent: { database_id: todoDbId }, properties: todoProps })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: apiKey,
+          endpoint: 'pages',
+          body: { parent: { database_id: todoDbId }, properties: todoProps }
+        })
       });
     } catch(e) { console.error('Todo 저장 실패:', e); }
   });
